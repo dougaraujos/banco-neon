@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dougaraujos/banco-neon#readme",
   "devDependencies": {
+    "browser-sync": "^2.23.5",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-sass": "^3.1.0"
