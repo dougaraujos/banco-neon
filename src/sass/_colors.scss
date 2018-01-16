@@ -5,10 +5,9 @@
 
 $foundation-palette: (
 	primary: #00A7DE,
-	secondary: #004F6A,
-	success: #8AEA7A,
+	secondary: #004F6A
 );
 
-$highlight-color: #A8FE48;
+$highlight-color: #A9FF48;
 
 @include add-foundation-colors;
