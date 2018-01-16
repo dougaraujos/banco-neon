@@ -1,0 +1,17 @@
+
+/**
+ * Balance
+ */
+
+.balance{
+	font-size: 1.9rem;
+	line-height: 2.2rem;
+	font-family: $font-family-bold;
+	text-align: center;
+
+	> .value{
+		@include breakpoint(small down){
+			display: none;
+		}
+	}
+}
