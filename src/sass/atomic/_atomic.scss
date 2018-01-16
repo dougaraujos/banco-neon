@@ -1,6 +1,15 @@
 /**
+ * Import Atoms
+ */
+
+@import 'atoms/line';
+@import 'atoms/text';
+
+
+/**
  * Import Molecules
  */
 
 @import 'molecules/header';
 @import 'molecules/balance';
+@import 'molecules/welcome';
