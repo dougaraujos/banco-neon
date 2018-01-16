@@ -7,3 +7,5 @@ $foundation-palette: (
 	primary: #00A7DE,
 	secondary: #004F6A
 );
+
+@include add-foundation-colors;
