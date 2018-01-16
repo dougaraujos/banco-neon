@@ -66,8 +66,22 @@ const IMAGES = {
 
 gulp.task('images', () => {
 	gulp.src(IMAGES.source)
-		.pipe(gulp.dest(IMAGES.public))
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest(IMAGES.public));
+});
+
+
+/**
+ * Fonts
+ */
+
+const FONTS = {
+	source: `${PATH.source}/fonts/**/*.*`,
+	public: `${PATH.public}/assets/fonts`
+}
+
+gulp.task('fonts', () => {
+	gulp.src(FONTS.source)
+		.pipe(gulp.dest(FONTS.public));
 });
 
 
@@ -84,5 +98,4 @@ gulp.task('serve', () => {
 
 	gulp.watch(CSS.source, ['css']);
 	gulp.watch(HTML.source, ['html']);
-	gulp.watch(IMAGES.source, ['images']);
 });
