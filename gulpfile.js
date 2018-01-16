@@ -4,6 +4,9 @@
  */
 
 const gulp = require('gulp');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 
@@ -16,6 +19,25 @@ const PATH = {
 	source: 'src',
 	public: 'dist'
 };
+
+
+/**
+ * JS
+ */
+
+const JS = {
+	source: `${PATH.source}/js/**/*.js`,
+	public:  `${PATH.public}/assets/js`,
+	name:  'main.min.js'
+};
+
+gulp.task('js', () => {
+	gulp.src(JS.source)
+		.pipe(babel())
+		.pipe(concat(JS.name))
+		.pipe(gulp.dest(JS.public))
+		.pipe(browserSync.stream());
+});
 
 
 /**
@@ -96,6 +118,7 @@ gulp.task('serve', () => {
 		}
 	});
 
+	gulp.watch(JS.source, ['js']);
 	gulp.watch(CSS.source, ['css']);
 	gulp.watch(HTML.source, ['html']);
 });
