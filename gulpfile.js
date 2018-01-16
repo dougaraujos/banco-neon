@@ -56,6 +56,22 @@ gulp.task('html', () => {
 
 
 /**
+ * Images
+ */
+
+const IMAGES = {
+	source: `${PATH.source}/images/**/*.*`,
+	public: `${PATH.public}/assets/images`
+}
+
+gulp.task('images', () => {
+	gulp.src(IMAGES.source)
+		.pipe(gulp.dest(IMAGES.public))
+		.pipe(browserSync.stream());
+});
+
+
+/**
  * Serve
  */
 
@@ -68,4 +84,5 @@ gulp.task('serve', () => {
 
 	gulp.watch(CSS.source, ['css']);
 	gulp.watch(HTML.source, ['html']);
+	gulp.watch(IMAGES.source, ['images']);
 });
