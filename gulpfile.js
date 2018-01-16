@@ -22,18 +22,36 @@ const PATH = {
  * CSS
  */
 
-const sassSrc =  `${PATH.source}/sass/**/*.scss`;
-const cssDist =  `${PATH.public}/assets/css`;
+const CSS = {
+	source: `${PATH.source}/sass/**/*.scss`,
+	public:  `${PATH.public}/assets/css`
+};
 
 gulp.task('css', () => {
-
-	gulp.src(sassSrc)
+	gulp.src(CSS.source)
 		.pipe(sass({
 			outputStyle: 'compressed',
 			sourcemap: true,
 			includePaths: ['./node_modules/foundation-sites/scss']
 		}).on('error', sass.logError))
-		.pipe(gulp.dest(cssDist));
+		.pipe(gulp.dest(CSS.public))
+		.pipe(browserSync.stream());
+});
+
+
+/**
+ * HTML
+ */
+
+const HTML = {
+	source: `${PATH.source}/**/*.html`,
+	public: `${PATH.public}`
+}
+
+gulp.task('html', () => {
+	gulp.src(HTML.source)
+		.pipe(gulp.dest(HTML.public))
+		.pipe(browserSync.stream());
 });
 
 
@@ -48,6 +66,6 @@ gulp.task('serve', () => {
 		}
 	});
 
-	gulp.watch(sassSrc, ['css']);
-	gulp.watch(`${PATH.public}/*.html`).on('change', browserSync.reload);
+	gulp.watch(CSS.source, ['css']);
+	gulp.watch(HTML.source, ['html']);
 });
