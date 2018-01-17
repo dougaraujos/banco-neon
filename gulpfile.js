@@ -4,8 +4,7 @@
  */
 
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
+const webpack = require('gulp-webpack');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
@@ -33,8 +32,20 @@ const JS = {
 
 gulp.task('js', () => {
 	gulp.src(JS.source)
-		.pipe(babel())
-		.pipe(concat(JS.name))
+		.pipe(webpack({
+			module: {
+				loaders: [{
+					test: /.js$/,
+					loader: 'babel-loader',
+					query: {
+						presets: ['es2015', 'stage-0']
+					}
+				}]
+			},
+			output: {
+				filename: JS.name
+			}
+		}))
 		.pipe(gulp.dest(JS.public))
 		.pipe(browserSync.stream());
 });
@@ -54,7 +65,10 @@ gulp.task('css', () => {
 		.pipe(sass({
 			outputStyle: 'compressed',
 			sourcemap: true,
-			includePaths: ['./node_modules/foundation-sites/scss']
+			includePaths: [
+				'./node_modules/foundation-sites/scss',
+				'./node_modules/tiny-slider/src/'
+			]
 		}).on('error', sass.logError))
 		.pipe(gulp.dest(CSS.public))
 		.pipe(browserSync.stream());
