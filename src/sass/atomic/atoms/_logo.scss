@@ -1,0 +1,20 @@
+
+/**
+ * Logo
+ */
+
+
+.logo{
+	&.is-desktop{
+		@include breakpoint(small down){
+			display: none;
+		}
+	}
+	&.is-mobile{
+		display: none;
+
+		@include breakpoint(small down){
+			display: block;
+		}
+	}
+}

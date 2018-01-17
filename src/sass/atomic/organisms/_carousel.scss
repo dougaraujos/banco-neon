@@ -1,0 +1,43 @@
+
+/**
+ * Carousel 
+ * Overwrite Tiny Slider plugin
+ */
+
+ .carousel{
+ 	display: flex;
+ }
+
+.tns-outer{
+	position: relative;
+	margin-top: 2rem;
+	padding-bottom: 3rem !important;
+}
+
+.tns-nav{
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+
+	> button{
+		display: inline-block;
+		margin: 5px;
+		width: 20px;
+		height: 20px;
+		background: transparent;
+		border: 1px solid #00F0FF;
+		border-radius: 3px;
+		opacity: 0.2;
+
+		&:focus,
+		&:active{
+			outline: none;
+			box-shadow: 0 0 10px $primary-color;
+		}
+
+		&.tns-nav-active{
+			opacity: 1;
+		}
+	}
+}

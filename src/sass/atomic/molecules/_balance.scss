@@ -4,10 +4,17 @@
  */
 
 .balance{
+	@extend .content;
+
 	font-size: 1.9rem;
 	line-height: 2.2rem;
 	font-family: $font-family-bold;
 	text-align: center;
+
+	@include breakpoint(small down){
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
 
 	> .value{
 		@include breakpoint(small down){
