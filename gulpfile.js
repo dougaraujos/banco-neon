@@ -136,3 +136,26 @@ gulp.task('serve', () => {
 	gulp.watch(CSS.source, ['css']);
 	gulp.watch(HTML.source, ['html']);
 });
+
+
+/**
+ * Development.
+ */
+
+gulp.task('dev', [
+	'default',
+	'serve'
+]);
+
+
+/**
+ * Production.
+ */
+
+gulp.task('default', [
+	'js',
+	'css',
+	'html',
+	'images',
+	'fonts'
+]);
