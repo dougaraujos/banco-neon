@@ -4,6 +4,8 @@
  */
 
 const gulp = require('gulp');
+const webpack = require('gulp-webpack');
+const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 
@@ -16,6 +18,37 @@ const PATH = {
 	source: 'src',
 	public: 'dist'
 };
+
+
+/**
+ * JS
+ */
+
+const JS = {
+	source: `${PATH.source}/js/**/*.js`,
+	public:  `${PATH.public}/assets/js`,
+	name:  'main.min.js'
+};
+
+gulp.task('js', () => {
+	gulp.src(JS.source)
+		.pipe(webpack({
+			module: {
+				loaders: [{
+					test: /.js$/,
+					loader: 'babel-loader',
+					query: {
+						presets: ['es2015', 'stage-0']
+					}
+				}]
+			},
+			output: {
+				filename: JS.name
+			}
+		}))
+		.pipe(gulp.dest(JS.public))
+		.pipe(browserSync.stream());
+});
 
 
 /**
@@ -32,7 +65,10 @@ gulp.task('css', () => {
 		.pipe(sass({
 			outputStyle: 'compressed',
 			sourcemap: true,
-			includePaths: ['./node_modules/foundation-sites/scss']
+			includePaths: [
+				'./node_modules/foundation-sites/scss',
+				'./node_modules/tiny-slider/src/'
+			]
 		}).on('error', sass.logError))
 		.pipe(gulp.dest(CSS.public))
 		.pipe(browserSync.stream());
@@ -66,8 +102,22 @@ const IMAGES = {
 
 gulp.task('images', () => {
 	gulp.src(IMAGES.source)
-		.pipe(gulp.dest(IMAGES.public))
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest(IMAGES.public));
+});
+
+
+/**
+ * Fonts
+ */
+
+const FONTS = {
+	source: `${PATH.source}/fonts/**/*.*`,
+	public: `${PATH.public}/assets/fonts`
+}
+
+gulp.task('fonts', () => {
+	gulp.src(FONTS.source)
+		.pipe(gulp.dest(FONTS.public));
 });
 
 
@@ -82,7 +132,7 @@ gulp.task('serve', () => {
 		}
 	});
 
+	gulp.watch(JS.source, ['js']);
 	gulp.watch(CSS.source, ['css']);
 	gulp.watch(HTML.source, ['html']);
-	gulp.watch(IMAGES.source, ['images']);
 });
