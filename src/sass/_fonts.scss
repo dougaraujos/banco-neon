@@ -1,0 +1,23 @@
+
+/**
+ * Fonts
+ */
+
+@font-face {
+	font-family: 'Averta';
+	src: url('/assets/fonts/Averta-Regular.otf'), local('Averta-Regular.otf');
+}
+
+@font-face {
+	font-family: 'Averta Light';
+	src: url('/assets/fonts/Averta-Light.otf'), local('Averta-Light.otf');
+}
+
+@font-face {
+	font-family: 'Averta bold';
+	src: url('/assets/fonts/Averta-bold.otf'), local('Averta-bold.otf');
+}
+
+$font-family: 'Averta';
+$font-family-light: 'Averta Light';
+$font-family-bold: 'Averta Bold';

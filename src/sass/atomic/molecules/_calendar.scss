@@ -1,0 +1,16 @@
+
+
+.calendar{
+	@extend .content;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background: #006182;
+	border-radius: 10px;
+
+	> img{
+		opacity: 0.5;
+	}
+}

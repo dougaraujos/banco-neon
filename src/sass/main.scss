@@ -1,0 +1,23 @@
+/**
+ * Dependencies injection
+ */
+
+@import 'foundation';
+@import 'tiny-slider';
+
+
+/**
+ * Settings
+ */
+
+@import 'reset';
+@import 'colors';
+@import 'fonts';
+@import 'layout';
+
+
+/**
+ * Atomic components
+ */
+
+@import 'atomic/atomic';

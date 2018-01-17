@@ -1,0 +1,13 @@
+
+/**
+ * Colors settings
+ */
+
+$foundation-palette: (
+	primary: #00A7DE,
+	secondary: #004F6A
+);
+
+$highlight-color: #A9FF48;
+
+@include add-foundation-colors;

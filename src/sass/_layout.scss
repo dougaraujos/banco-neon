@@ -1,0 +1,25 @@
+
+/**
+ * Layout
+ */
+
+html,
+body{
+	height: 100%;
+}
+
+body{
+	background: $secondary-color;
+	font-family: $font-family;
+	color: $white;
+	overflow-x: hidden;
+}
+
+main{
+	padding: 1rem;
+}
+
+.content{
+	margin: 0 auto;
+	max-width: 500px;
+}
