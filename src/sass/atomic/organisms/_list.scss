@@ -4,7 +4,9 @@
  */
 
 .list{
-	margin-top: 1rem;
+	@extend .content;
+
+	margin: 0 auto;
 	overflow: hidden;
 	border-radius: 10px;
 }
